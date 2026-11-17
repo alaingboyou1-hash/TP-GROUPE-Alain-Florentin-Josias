@@ -1,0 +1,63 @@
+TP3 — EXÉCUTION DU SCHÉMA DANS UNE BASE VIDE ET VÉRIFICATION DES COMPTES
+Date        : 2026-11-17 15:12:31
+Base        : tp03_vide (recréée à l'instant)
+Scripts     : 001_schema.sql, 002_seed.sql
+
+SGBD :
++-----------------+
+| version         |
++-----------------+
+| 10.4.32-MariaDB |
++-----------------+
+
+Tables créées :
++---------------------+
+| Tables_in_tp03_vide |
++---------------------+
+| demande_stage       |
+| encadreur           |
+| entreprise          |
+| etudiant            |
+| soutenance          |
++---------------------+
+
+Contraintes déclarées :
++---------------+-------------+-----------------------+
+| table_        | type        | nom                   |
++---------------+-------------+-----------------------+
+| demande_stage | CHECK       | ck_demande_statut     |
+| demande_stage | FOREIGN KEY | fk_demande_encadreur  |
+| demande_stage | FOREIGN KEY | fk_demande_entreprise |
+| demande_stage | FOREIGN KEY | fk_demande_etudiant   |
+| demande_stage | PRIMARY KEY | PRIMARY               |
+| encadreur     | PRIMARY KEY | PRIMARY               |
+| encadreur     | UNIQUE      | uq_encadreur_email    |
+| entreprise    | PRIMARY KEY | PRIMARY               |
+| etudiant      | PRIMARY KEY | PRIMARY               |
+| etudiant      | UNIQUE      | uq_etudiant_email     |
+| soutenance    | FOREIGN KEY | fk_soutenance_demande |
+| soutenance    | PRIMARY KEY | PRIMARY               |
+| soutenance    | UNIQUE      | uq_soutenance_creneau |
+| soutenance    | UNIQUE      | uq_soutenance_demande |
++---------------+-------------+-----------------------+
+
+Comptes demandés par le sujet :
++---------------+--------+
+| table_        | lignes |
++---------------+--------+
+| etudiant      |      3 |
+| entreprise    |      2 |
+| demande_stage |      4 |
+| encadreur     |      2 |
+| soutenance    |      1 |
++---------------+--------+
+
+Contrôle UNIQUE : une demande a au plus une soutenance.
+ERROR 1062 (23000) at line 2: Duplicate entry '2' for key 'uq_soutenance_demande'
+OK : insertion refusée par uq_soutenance_demande.
+
+Contrôle UNIQUE : un créneau de salle est unique.
+ERROR 1062 (23000) at line 2: Duplicate entry 'B12-2026-12-10 09:00:00' for key 'uq_soutenance_creneau'
+OK : insertion refusée par uq_soutenance_creneau.
+
+Résultat : OK — 3 étudiants, 2 entreprises, 4 demandes.
