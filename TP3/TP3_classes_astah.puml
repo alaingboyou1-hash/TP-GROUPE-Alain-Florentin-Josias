@@ -1,0 +1,47 @@
+@startuml TP3_Classes
+' =====================================================================
+' TP3 — Diagramme de classes
+' À importer dans Astah UML via le plugin PlantUML :
+'   PlantUML View > coller ce texte > bouton « toAstah »
+' 5 classes, 4 associations, multiplicités conformes au sujet.
+' =====================================================================
+
+class "Étudiant" as Etudiant {
+  +id : int
+  +nom : string
+  +prenom : string
+  +email : string
+}
+
+class "Entreprise" as Entreprise {
+  +id : int
+  +nom : string
+  +ville : string
+}
+
+class "Encadreur" as Encadreur {
+  +id : int
+  +nom : string
+  +prenom : string
+  +email : string
+}
+
+class "DemandeStage" as DemandeStage {
+  +id : int
+  +statut : string
+  +motif_refus : string
+  +cree_le : datetime
+}
+
+class "Soutenance" as Soutenance {
+  +id : int
+  +date_heure : datetime
+  +salle : string
+}
+
+Etudiant     "1"    -- "0..*" DemandeStage : dépose
+Entreprise   "1"    -- "0..*" DemandeStage : accueille
+Encadreur    "0..1" -- "0..*" DemandeStage : encadre
+DemandeStage "1"    -- "0..1" Soutenance   : donne lieu à
+
+@enduml
