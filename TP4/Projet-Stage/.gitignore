@@ -1,0 +1,17 @@
+# Secrets : ne jamais versionner le fichier .env réel
+.env
+.env.local
+
+# Seul le modèle est versionné
+!.env.example
+
+# Journaux et fichiers générés à l'exécution
+var/
+*.log
+
+# Dépendances éventuelles
+vendor/
+
+# Système
+.DS_Store
+Thumbs.db
