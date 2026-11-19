@@ -1,0 +1,2 @@
+{"utilisateur":{"id":1,"email":"etudiant@exemple.test","role":"ETUDIANT","nom":"Hounkpatin","prenom":"Grâce"}}
+HTTP_CODE=200

@@ -1,0 +1,1 @@
+{"utilisateur":{"id":4,"email":"etudiant2@exemple.test","role":"ETUDIANT","nom":"Adjovi","prenom":"Koffi"}}login:

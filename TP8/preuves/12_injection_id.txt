@@ -1,0 +1,6 @@
+{"erreur":{"code":"route_inconnue","message":"Route introuvable"}}
+HTTP_CODE=404
+=== tentative injection dans l'identifiant (URL) ===
+=== tentative injection dans l'email de connexion ===
+{"erreur":{"code":"identifiants_invalides","message":"Identifiants invalides"}}
+HTTP_CODE=401

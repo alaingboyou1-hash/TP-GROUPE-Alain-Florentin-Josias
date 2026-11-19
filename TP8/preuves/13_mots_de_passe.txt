@@ -1,0 +1,5 @@
+id	email	role	hash_debut	longueur
+1	etudiant@exemple.test	ETUDIANT	$2y$12$/KWEKjf0jMFGh	60
+2	responsable@exemple.test	RESPONSABLE	$2y$12$D8wtaDYZh9Lfu	60
+3	secretariat@exemple.test	SECRETARIAT	$2y$12$OCH8MpVprwfmW	60
+4	etudiant2@exemple.test	ETUDIANT	$2y$12$/KWEKjf0jMFGh	60

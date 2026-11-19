@@ -1,0 +1,2 @@
+{"erreur":{"code":"acces_interdit","message":"Accès interdit"}}
+HTTP_CODE=403

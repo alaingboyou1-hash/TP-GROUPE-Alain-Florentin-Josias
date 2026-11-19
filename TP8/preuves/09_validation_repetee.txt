@@ -1,0 +1,2 @@
+{"erreur":{"code":"transition_interdite","message":"Transition VALIDEE → SOUMISE interdite"}}
+HTTP_CODE=409

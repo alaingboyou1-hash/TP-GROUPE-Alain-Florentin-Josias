@@ -1,0 +1,4 @@
+{"erreur":{"code":"donnees_invalides","message":"Dates invalides (format AAAA-MM-JJ)"}}
+HTTP_CODE=400
+{"erreur":{"code":"donnees_invalides","message":"La date de fin précède la date de début"}}
+HTTP_CODE=400

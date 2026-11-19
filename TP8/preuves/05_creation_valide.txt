@@ -1,0 +1,2 @@
+{"demande":{"id":5,"etudiant_id":1,"entreprise_id":1,"intitule":"Stage test TP8","date_debut":"2027-06-01","date_fin":"2027-08-31","statut":"BROUILLON","motif_refus":null,"cree_le":"2026-11-19 17:39:21","maj_le":"2026-11-19 17:39:21"}}
+HTTP_CODE=201

@@ -1,0 +1,2 @@
+{"erreur":{"code":"motif_requis","message":"Le motif de refus est obligatoire"}}
+HTTP_CODE=400
