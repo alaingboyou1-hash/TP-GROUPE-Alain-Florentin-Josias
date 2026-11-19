@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Host: 127.0.0.1:8140
+Date: Thu, 19 Nov 2026 14:11:27 GMT
+Connection: close
+X-Powered-By: PHP/8.4.27
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Pragma: no-cache
+Content-Type: application/json; charset=utf-8
+Cache-Control: no-store
+
+{"demande":{"id":2,"etudiant_id":1,"entreprise_id":2,"intitule":"Stage analyse de données","date_debut":"2027-02-01","date_fin":"2027-04-30","statut":"VALIDEE","motif_refus":null,"cree_le":"2026-11-11 10:00:00","maj_le":"2026-11-19 15:11:27"}}
