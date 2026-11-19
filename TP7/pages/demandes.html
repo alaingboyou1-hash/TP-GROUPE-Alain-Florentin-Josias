@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demandes — Demandes de stage</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header class="entete">
+        <a href="demandes.html">Demandes de stage</a>
+        <p id="utilisateur" class="utilisateur"></p>
+        <p><a href="connexion.html" id="changer-compte">Changer de compte</a></p>
+    </header>
+
+    <main>
+        <h1>Demandes de stage</h1>
+
+        <p id="erreur" class="erreur" role="alert" hidden></p>
+
+        <div class="barre-actions">
+            <a href="depot.html" id="lien-depot" class="bouton" hidden>Déposer une demande</a>
+            <button type="button" class="secondaire" id="actualiser">Actualiser</button>
+        </div>
+
+        <table>
+            <caption class="aide" style="caption-side: bottom; text-align: left; padding-top: 0.5rem;">
+                Liste des demandes visibles pour votre rôle.
+            </caption>
+            <thead>
+                <tr>
+                    <th scope="col">Intitulé</th>
+                    <th scope="col">Entreprise</th>
+                    <th scope="col">Dates</th>
+                    <th scope="col">Statut</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody id="lignes"></tbody>
+        </table>
+
+        <p id="liste-vide" class="vide" hidden>Aucune demande pour le moment.</p>
+    </main>
+
+    <script src="assets/api.js"></script>
+    <script src="assets/demandes.js"></script>
+</body>
+</html>
