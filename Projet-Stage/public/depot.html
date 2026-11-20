@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Déposer une demande — Demandes de stage</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header class="entete">
+        <a href="demandes.html">Demandes de stage</a>
+        <p id="utilisateur" class="utilisateur"></p>
+        <p><a href="connexion.html" id="changer-compte">Changer de compte</a></p>
+    </header>
+
+    <main class="etroite">
+        <h1>Déposer une demande</h1>
+        <p class="intro">Renseignez l'entreprise d'accueil et la période souhaitée.</p>
+
+        <div class="carte">
+            <form id="formulaire-depot" novalidate>
+                <div class="champ">
+                    <label for="entreprise">Entreprise d'accueil</label>
+                    <select id="entreprise" name="entreprise_id" required aria-describedby="erreur-entreprise">
+                        <option value="">Choisir une entreprise</option>
+                        <option value="1">Atelier Numérique — Cotonou</option>
+                        <option value="2">Bénin Data — Porto-Novo</option>
+                    </select>
+                    <p id="erreur-entreprise" class="erreur" role="alert" hidden></p>
+                </div>
+
+                <div class="champ">
+                    <label for="intitule">Intitulé du stage</label>
+                    <input id="intitule" name="intitule" type="text" required minlength="3" maxlength="160"
+                           aria-describedby="aide-intitule erreur-intitule">
+                    <p id="aide-intitule" class="aide">De 3 à 160 caractères.</p>
+                    <p id="erreur-intitule" class="erreur" role="alert" hidden></p>
+                </div>
+
+                <div class="champ">
+                    <label for="date-debut">Date de début</label>
+                    <input id="date-debut" name="date_debut" type="date" required aria-describedby="erreur-dates">
+                    <p id="erreur-dates" class="erreur" role="alert" hidden></p>
+                </div>
+
+                <div class="champ">
+                    <label for="date-fin">Date de fin</label>
+                    <input id="date-fin" name="date_fin" type="date" required aria-describedby="erreur-dates">
+                </div>
+
+                <p id="erreur-generale" class="erreur" role="alert" hidden></p>
+
+                <div class="barre-actions">
+                    <button type="submit">Envoyer la demande</button>
+                    <a href="demandes.html" class="bouton secondaire">Annuler</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="pied">Projet informatique 2 — Gestion des demandes de stage</footer>
+
+    <script src="assets/api.js"></script>
+    <script src="assets/depot.js"></script>
+</body>
+</html>

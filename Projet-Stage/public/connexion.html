@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connexion — Demandes de stage</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header class="entete">
+        <a href="connexion.html">Demandes de stage</a>
+        <p class="utilisateur">Projet Informatique 2</p>
+    </header>
+
+    <main class="etroite">
+        <h1>Connexion</h1>
+        <p class="intro">Connectez-vous pour consulter et gérer les demandes de stage.</p>
+
+        <div class="carte">
+            <form id="formulaire-connexion" novalidate>
+                <p id="information" class="aide" role="status" hidden></p>
+
+                <div class="champ">
+                    <label for="email">Adresse électronique</label>
+                    <input id="email" name="email" type="email" autocomplete="username"
+                           required aria-describedby="erreur-email">
+                    <p id="erreur-email" class="erreur" role="alert" hidden></p>
+                </div>
+
+                <div class="champ">
+                    <label for="mot-de-passe">Mot de passe</label>
+                    <input id="mot-de-passe" name="mot_de_passe" type="password"
+                           autocomplete="current-password" required aria-describedby="erreur-mot-de-passe">
+                    <p id="erreur-mot-de-passe" class="erreur" role="alert" hidden></p>
+                </div>
+
+                <p id="erreur-generale" class="erreur" role="alert" hidden></p>
+
+                <div>
+                    <button type="submit">Se connecter</button>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <footer class="pied">Projet informatique 2 — Gestion des demandes de stage</footer>
+
+    <script src="assets/api.js"></script>
+    <script src="assets/connexion.js"></script>
+</body>
+</html>

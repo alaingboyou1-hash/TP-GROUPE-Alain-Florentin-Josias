@@ -1,0 +1,53 @@
+# Preuve du test des balises (rendu sécurisé)
+=================================================
+
+Date : 19/11/2026
+Page : liste des demandes (public/demandes.html)
+Compte : etudiant@exemple.test (Étudiant)
+
+1. Valeur saisie dans le champ « Intitulé du stage »
+-----------------------------------------------------
+<img src=x onerror=alert('XSS')> <b>gras</b> Stage test
+
+2. Création par le formulaire
+-----------------------------
+POST /api/demandes  →  HTTP 201
+Corps envoyé :
+{"entreprise_id":2,"intitule":"<img src=x onerror=alert('XSS')> <b>gras</b> Stage test","date_debut":"2027-02-01","date_fin":"2027-04-30"}
+
+3. Valeur réellement enregistrée
+--------------------------------
+GET /api/demandes  →  HTTP 200
+{
+  "id": 6,
+  "etudiant_id": 1,
+  "entreprise_id": 2,
+  "intitule": "<img src=x onerror=alert('XSS')> <b>gras</b> Stage test",
+  "date_debut": "2027-02-01",
+  "date_fin": "2027-04-30",
+  "statut": "BROUILLON",
+  "motif_refus": null,
+  "cree_le": "2026-11-19 17:06:26"
+}
+
+La valeur est donc conservée telle quelle par la base : elle n'est pas nettoyée
+à l'entrée, c'est l'affichage qui doit rester sûr.
+
+4. Mesures faites dans la page affichée
+---------------------------------------
+document.querySelectorAll('img').length                        = 0
+document.querySelectorAll('b').length                          = 0
+document.getElementById('intitule').innerHTML.includes('&lt;img')  = true
+document.getElementById('intitule').textContent                = "<img src=x onerror=alert('XSS')> <b>gras</b> Stage test"
+boîte de dialogue ouverte (alert)                              = aucune
+erreurs de la console                                          = aucune
+
+Même mesure sur la liste :
+Array.from(document.querySelectorAll('tbody tr'))[0].children[0].textContent
+= "<img src=x onerror=alert('XSS')> <b>gras</b> Stage test"
+
+5. Conclusion
+-------------
+Aucune balise n'est créée dans la page : le texte est inséré avec textContent
+(et innerHTML n'est jamais utilisé pour des données). La charge est affichée
+littéralement, comme le montre la capture 07_test_balises.jpg.

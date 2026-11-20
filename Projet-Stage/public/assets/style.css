@@ -1,0 +1,482 @@
+/* Feuille de style unique, sans dépendance. */
+
+:root {
+    --fond: #f3f6f4;
+    --carte: #ffffff;
+    --texte: #16211b;
+    --texte-doux: #5d6b63;
+    --bord: #dde5df;
+    --accent: #0f6b45;
+    --accent-fonce: #0a4d31;
+    --accent-clair: #e8f2ec;
+    --erreur: #b3261e;
+    --succes: #0f6b45;
+    --ombre: 0 1px 2px rgba(22, 33, 27, 0.05), 0 12px 32px -18px rgba(22, 33, 27, 0.35);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* L'attribut hidden doit toujours l'emporter sur les display du thème. */
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(900px 380px at 50% -180px, #e2efe7 0%, transparent 70%),
+        var(--fond);
+    background-attachment: fixed;
+    color: var(--texte);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.entete {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1.25rem;
+    padding: 0.85rem 1.5rem;
+    background: rgba(255, 255, 255, 0.88);
+    border-bottom: 1px solid var(--bord);
+    backdrop-filter: blur(10px);
+}
+
+.entete > a:first-child {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-right: auto;
+    color: var(--texte);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+}
+
+.entete > a:first-child::before {
+    content: "";
+    width: 1.45rem;
+    height: 1.45rem;
+    border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent) 0%, #37a06d 100%);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.entete .utilisateur {
+    margin: 0;
+    color: var(--texte-doux);
+    font-size: 0.9rem;
+}
+
+.entete > p:last-child {
+    margin: 0;
+}
+
+.entete > p:last-child a {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid var(--bord);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--texte-doux);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.entete > p:last-child a:hover {
+    border-color: var(--accent);
+    background: var(--accent-clair);
+    color: var(--accent-fonce);
+}
+
+main {
+    max-width: 62rem;
+    margin: 2.75rem auto 4rem;
+    padding: 0 1.25rem;
+}
+
+main.etroite {
+    max-width: 40rem;
+}
+
+h1 {
+    margin: 0 0 0.4rem;
+    font-size: 1.75rem;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+
+h1 + .intro {
+    margin: 0 0 1.5rem;
+    color: var(--texte-doux);
+}
+
+h2 {
+    margin: 2.5rem 0 0.9rem;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+}
+
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    color: var(--accent-fonce);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::selection {
+    background: var(--accent-clair);
+    color: var(--accent-fonce);
+}
+
+.carte {
+    padding: 1.6rem;
+    background: var(--carte);
+    border: 1px solid var(--bord);
+    border-radius: 14px;
+    box-shadow: var(--ombre);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.carte:hover {
+    box-shadow: 0 2px 4px rgba(22, 33, 27, 0.06), 0 16px 40px -18px rgba(22, 33, 27, 0.4);
+}
+
+form {
+    display: grid;
+    gap: 1.15rem;
+    max-width: 34rem;
+}
+
+.champ {
+    display: grid;
+    gap: 0.4rem;
+}
+
+label {
+    font-size: 0.92rem;
+    font-weight: 650;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--bord);
+    border-radius: 8px;
+    background: #fbfcfb;
+    color: var(--texte);
+    font: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: #c3d1c8;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(15, 107, 69, 0.16);
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+textarea {
+    min-height: 6rem;
+    resize: vertical;
+}
+
+.aide {
+    margin: 0;
+    color: var(--texte-doux);
+    font-size: 0.85rem;
+}
+
+.erreur {
+    margin: 0;
+    color: var(--erreur);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.succes {
+    margin: 0 0 1rem;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid #c6e4d1;
+    border-radius: 8px;
+    background: var(--accent-clair);
+    color: var(--succes);
+    font-weight: 600;
+}
+
+main > .erreur {
+    margin-bottom: 1rem;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid #f0c9c5;
+    border-radius: 8px;
+    background: #fbeceb;
+}
+
+button,
+.bouton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.62rem 1.15rem;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 650;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(10, 77, 49, 0.25);
+    transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+button:hover,
+.bouton:hover {
+    background: var(--accent-fonce);
+    color: #fff;
+    box-shadow: 0 4px 14px -6px rgba(10, 77, 49, 0.55);
+}
+
+button:active,
+.bouton:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+button.secondaire,
+.bouton.secondaire {
+    background: #fff;
+    border-color: var(--bord);
+    color: var(--texte);
+    box-shadow: none;
+}
+
+button.secondaire:hover,
+.bouton.secondaire:hover {
+    background: var(--accent-clair);
+    border-color: var(--accent);
+    color: var(--accent-fonce);
+}
+
+button.danger {
+    background: var(--erreur);
+    box-shadow: 0 1px 2px rgba(179, 38, 30, 0.3);
+}
+
+button.danger:hover {
+    background: #8f1d17;
+}
+
+.barre-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.barre-actions a:not(.bouton) {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.barre-actions a:not(.bouton):hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    background: var(--carte);
+    border: 1px solid var(--bord);
+    border-radius: 14px;
+    box-shadow: var(--ombre);
+}
+
+th,
+td {
+    padding: 0.8rem 0.95rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--bord);
+}
+
+th {
+    background: #f6f9f7;
+    color: var(--texte-doux);
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+}
+
+tbody tr {
+    transition: background 0.12s ease;
+}
+
+tbody tr:hover {
+    background: #f8fbf9;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody td:first-child {
+    font-weight: 600;
+}
+
+td a {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+.statut {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.statut-brouillon {
+    background: #eef1ef;
+    color: #4c5a52;
+}
+
+.statut-soumise {
+    background: #fdf3d7;
+    color: #8a5a00;
+}
+
+.statut-validee {
+    background: var(--accent-clair);
+    color: var(--accent-fonce);
+}
+
+.statut-refusee {
+    background: #fbe9e7;
+    color: var(--erreur);
+}
+
+.vide {
+    padding: 1.5rem;
+    border: 1px dashed var(--bord);
+    border-radius: 12px;
+    color: var(--texte-doux);
+    font-style: italic;
+    text-align: center;
+}
+
+dl {
+    display: grid;
+    grid-template-columns: minmax(9rem, 14rem) 1fr;
+    gap: 0.85rem 1.5rem;
+    margin: 0;
+}
+
+dt {
+    color: var(--texte-doux);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-top: 0.15rem;
+}
+
+dd {
+    margin: 0;
+}
+
+#fiche .barre-actions {
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--bord);
+    margin-top: 1.5rem;
+}
+
+#formulaire-refus {
+    max-width: 34rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--bord);
+}
+
+caption {
+    color: var(--texte-doux);
+}
+
+@media (max-width: 40rem) {
+    .entete {
+        padding: 0.75rem 1rem;
+    }
+
+    main {
+        margin-top: 2rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .carte {
+        padding: 1.15rem;
+    }
+
+    dl {
+        grid-template-columns: 1fr;
+    }
+
+    dd {
+        margin-bottom: 0.4rem;
+    }
+}
+
+.pied {
+    margin: 3rem 0 1rem;
+    text-align: center;
+    color: var(--texte-doux);
+    font-size: 0.8rem;
+}

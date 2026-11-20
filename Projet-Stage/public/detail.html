@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Détail d'une demande — Demandes de stage</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header class="entete">
+        <a href="demandes.html">Demandes de stage</a>
+        <p id="utilisateur" class="utilisateur"></p>
+        <p><a href="connexion.html" id="changer-compte">Changer de compte</a></p>
+    </header>
+
+    <main>
+        <h1>Détail de la demande</h1>
+
+        <p id="confirmation" class="succes" role="status" hidden></p>
+        <p id="erreur" class="erreur" role="alert" hidden></p>
+
+        <div class="carte" id="fiche" hidden>
+            <dl>
+                <dt>Intitulé</dt>
+                <dd id="intitule"></dd>
+
+                <dt>Entreprise</dt>
+                <dd id="entreprise"></dd>
+
+                <dt>Période</dt>
+                <dd id="periode"></dd>
+
+                <dt>Statut</dt>
+                <dd id="statut"></dd>
+
+                <dt id="etiquette-motif" hidden>Motif du refus</dt>
+                <dd id="motif" hidden></dd>
+            </dl>
+
+            <p id="indisponible" class="aide" hidden>
+                Seul un responsable peut faire évoluer une demande.
+            </p>
+
+            <div class="barre-actions" id="actions"></div>
+
+            <form id="formulaire-refus" hidden>
+                <div class="champ">
+                    <label for="motif-saisi">Motif du refus</label>
+                    <textarea id="motif-saisi" maxlength="255" required
+                              aria-describedby="aide-motif erreur-motif"></textarea>
+                    <p id="aide-motif" class="aide">255 caractères au maximum.</p>
+                    <p id="erreur-motif" class="erreur" role="alert" hidden></p>
+                </div>
+
+                <div class="barre-actions">
+                    <button type="submit" class="danger">Confirmer le refus</button>
+                    <button type="button" class="secondaire" id="annuler-refus">Annuler</button>
+                </div>
+            </form>
+        </div>
+
+        <p><a href="demandes.html">Retour à la liste</a></p>
+    </main>
+
+    <footer class="pied">Projet informatique 2 — Gestion des demandes de stage</footer>
+
+    <script src="assets/api.js"></script>
+    <script src="assets/detail.js"></script>
+</body>
+</html>
