@@ -1,0 +1,12 @@
+=== Installation sur second poste ===
+1. clone + cd : OK
+2. .env configure : OK
+3. import schema.sql + seed.sql : OK
+4. serveur demarre : php -S 127.0.0.1:8199
+
+=== Page de sante ===
+{"statut":"ok","base":"joignable"}
+HTTP=200
+
+=== Page d'accueil ===
+connexion.html HTTP=200

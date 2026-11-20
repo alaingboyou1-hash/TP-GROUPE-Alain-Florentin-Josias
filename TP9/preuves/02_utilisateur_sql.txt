@@ -1,0 +1,15 @@
+=== Utilisateur SQL dedie (droits limites) ===
+CREATE USER 'tp9_limite'@'127.0.0.1' IDENTIFIED BY 'tp9_mot_de_passe';
+GRANT SELECT, INSERT, UPDATE, DELETE ON tp9_second.* TO 'tp9_limite'@'127.0.0.1';
+
+=== Test connexion (doit reussir) ===
+nb_demandes
+4
+
+=== Test droit interdit : DROP TABLE (doit echouer) ===
+ERROR 1142 (42000) at line 1: DROP command denied to user 'tp9_limite'@'localhost' for table `tp9_second`.`demande_stage`
+
+=== Droits effectifs ===
+Grants for tp9_limite@127.0.0.1
+GRANT USAGE ON *.* TO `tp9_limite`@`127.0.0.1` IDENTIFIED BY PASSWORD '*08058EDC0086012A780972EB95BF1F54E1B0D3E6'
+GRANT SELECT, INSERT, UPDATE, DELETE ON `tp9_second`.* TO `tp9_limite`@`127.0.0.1`

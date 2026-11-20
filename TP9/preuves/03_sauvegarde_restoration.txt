@@ -1,0 +1,26 @@
+=== Sauvegarde et restauration (TP9) ===
+
+1) Export :
+   mysqldump -u tp6_app -p tp9_second > sauvegarde_tp9.sql
+   (sortie : /tmp/opencode/sauvegarde_tp9.sql, exit 0)
+
+2) Avant suppression :
+demande_stage	4
+utilisateur	3
+
+3) Suppression de la table demande_stage (simule un incident) :
+   SET FOREIGN_KEY_CHECKS=0; DROP TABLE demande_stage;
+   -> Table 'tp9_second.demande_stage' doesn't exist (confirme la suppression)
+
+4) Restauration :
+   mysql tp9_second < sauvegarde_tp9.sql  ->  restore OK
+
+5) Apres restauration :
+demande_stage	4
+utilisateur	3
+
+6) Comparaison :
+   demande_stage : 4 avant -> 4 apres  (OK)
+   utilisateur   : 3 avant -> 3 apres  (OK)
+
+Conclusion : restauration verifiee avec succes, les COUNT(*) coincident.
