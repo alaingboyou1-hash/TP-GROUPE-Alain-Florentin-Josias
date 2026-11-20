@@ -1,0 +1,30 @@
+$ git log --oneline --graph --decorate --all
+*   fdb7544 (HEAD -> main) Résout le conflit du README
+|\  
+| * 4dbb24c Reformule la présentation du projet
+* |   b018305 Fusionne conflit/readme-b
+|\ \  
+| |/  
+|/|   
+| * 822c675 Précise la base testée dans le README
+|/  
+*   25f3e10 Fusionne feature/notes-revue après revue
+|\  
+| * 88922a3 Ajoute les notes de revue
+|/  
+*   759e680 Fusionne feature/test-sante après revue
+|\  
+| * c985695 Ajoute le test HTTP de la route de santé
+|/  
+*   b166c48 Fusionne feature/guide-contribution après revue
+|\  
+| * 94b8e90 Documente le flux de contribution
+|/  
+* c0dc9e7 (origin/main) Ajoute le tableau Kanban de huit cartes
+* f71648f Ajoute le squelette PHP et la route de santé
+* 02deb73 Initialise le dépôt et le README
+
+$ git shortlog -sne --all
+     7	Membre A <membre.a@exemple.test>
+     4	Membre B <membre.b@exemple.test>
+     2	Membre C <membre.c@exemple.test>

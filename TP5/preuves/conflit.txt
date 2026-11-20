@@ -1,0 +1,40 @@
+$ git merge --no-ff conflit/readme-a
+Fusion automatique de README.md
+CONFLIT (contenu) : Conflit de fusion dans README.md
+La fusion automatique a échoué ; réglez les conflits et validez le résultat.
+
+$ git status --short
+UU README.md
+?? preuves/
+
+$ sed -n "1,12p" README.md
+# Projet Stages — squelette technique
+
+**TP4 · Projet Informatique 2 · L3 SIL · données fictives uniquement**
+
+<<<<<<< HEAD
+Application de gestion des stages et soutenances, en PHP 8 sans framework, testée sur MariaDB.
+=======
+Application de gestion des stages et soutenances — PHP 8, sans framework.
+>>>>>>> conflit/readme-a
+
+## Prérequis
+
+
+$ grep -n "<<<<<<<" README.md
+Aucun marqueur restant.
+
+$ sed -n "5p" README.md
+Application de gestion des stages et soutenances — PHP 8, sans framework, testée sur MariaDB.
+
+$ php -l public/index.php
+No syntax errors detected in public/index.php
+
+$ php tests/test_connexion.php
+Connexion PDO : OK
+Base : tp4_app@127.0.0.1:3307/tp4_sante
+Serveur : 10.4.32-MariaDB
+SELECT 1 => 1
+
+$ bash tests/verifier_sante.sh
+OK : GET /api/sante renvoie 200 et la base est joignable
