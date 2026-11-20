@@ -71,6 +71,15 @@ try {
         $demandeController->changerStatut((int) $correspondances[1]);
     }
 
+    if ($methode === 'GET' && $chemin === '/api/sante') {
+        try {
+            $pdo->query('SELECT 1');
+            Http::json(['statut' => 'ok', 'base' => 'joignable'], 200);
+        } catch (Throwable $e) {
+            Http::json(['statut' => 'erreur', 'base' => 'injoignable'], 500);
+        }
+    }
+
     throw new ApiException(404, 'route_inconnue', 'Route introuvable');
 } catch (ApiException $e) {
     Http::json([

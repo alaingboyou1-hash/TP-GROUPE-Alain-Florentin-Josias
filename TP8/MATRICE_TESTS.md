@@ -5,6 +5,8 @@ fictif (`etudiant2@exemple.test`, mot de passe `etudiant123`) pour le test
 d'autorisation. Serveur `php -S 127.0.0.1:8140`. Toutes les personnes et données sont
 fictives.
 
+Chaque preuve existe en texte (`.txt`/`.json`) et en capture (`.png` de même nom).
+
 Chaque ligne donne **l'attendu écrit avant l'exécution** ; la colonne « Observé » est
 le résultat réel, la colonne « Preuve » pointe vers `preuves/`.
 

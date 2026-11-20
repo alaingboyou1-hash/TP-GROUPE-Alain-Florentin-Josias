@@ -5,13 +5,13 @@
 SET NAMES utf8mb4;
 
 INSERT INTO utilisateur (id, email, mot_de_passe_hash, role, nom, prenom) VALUES
-(1, 'etudiant@exemple.test', '$2y$12$/KWEKjf0jMFGhuXIFAgHw.BaIOnnnzexHCT6wYvUbil5ZwPKaiwKO', 'ETUDIANT', 'Diallo', 'Awa'),
-(2, 'responsable@exemple.test', '$2y$12$D8wtaDYZh9Lfu4Y2Sv7cyuK06czJhL3pj8BHQWz1awyTIslJni/o.', 'RESPONSABLE', 'Traoré', 'Moussa'),
-(3, 'secretariat@exemple.test', '$2y$12$OCH8MpVprwfmW44XxPS7C.76MKezCJmKDfsSP6QSI4uml/X4Pxd7W', 'SECRETARIAT', 'Ndiaye', 'Fatou');
+(1, 'etudiant@exemple.test', '$2y$12$/KWEKjf0jMFGhuXIFAgHw.BaIOnnnzexHCT6wYvUbil5ZwPKaiwKO', 'ETUDIANT', 'Hounkpatin', 'Grâce'),
+(2, 'responsable@exemple.test', '$2y$12$D8wtaDYZh9Lfu4Y2Sv7cyuK06czJhL3pj8BHQWz1awyTIslJni/o.', 'RESPONSABLE', 'Dossou', 'Serge'),
+(3, 'secretariat@exemple.test', '$2y$12$OCH8MpVprwfmW44XxPS7C.76MKezCJmKDfsSP6QSI4uml/X4Pxd7W', 'SECRETARIAT', 'Kpadonou', 'Célestine');
 
 INSERT INTO entreprise (id, nom, ville) VALUES
-(1, 'Atelier Numérique', 'Dakar'),
-(2, 'Data Sahel', 'Thiès');
+(1, 'Atelier Numérique', 'Cotonou'),
+(2, 'Bénin Data', 'Porto-Novo');
 
 INSERT INTO demande_stage (id, etudiant_id, entreprise_id, intitule, date_debut, date_fin, statut, motif_refus, cree_le) VALUES
 (1, 1, 1, 'Stage développement web', '2027-01-05', '2027-03-27', 'BROUILLON', NULL, '2026-11-10 09:00:00'),
