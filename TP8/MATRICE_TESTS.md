@@ -10,24 +10,24 @@ Chaque preuve existe en texte (`.txt`/`.json`) et en capture (`.png` de même no
 Chaque ligne donne **l'attendu écrit avant l'exécution** ; la colonne « Observé » est
 le résultat réel, la colonne « Preuve » pointe vers `preuves/`.
 
-| # | Test | Exigence | Données | Attendu | Observé | Preuve | Verdict |
+| # | Test | Exigence | Données | Attendu | Observé | Preuve | Résultat |
 |---|---|---|---|---|---|---|---|
-| 1 | Connexion valide (étudiant) | Authentification | `etudiant@exemple.test` / `etudiant123` | HTTP 200, utilisateur renvoyé, cookie de session posé | HTTP 200, `{"utilisateur":{"id":1,...}}`, cookie `stages_session` | `preuves/01_connexion_valide.txt` | ✅ |
-| 2 | Connexion invalide | Authentification | `etudiant@exemple.test` / `mauvais` | HTTP 401, pas de session | HTTP 401 `identifiants_invalides` | `preuves/02_connexion_invalide.txt` | ✅ |
-| 3 | Liste par étudiant | Autorisation lecture | Cookie étudiant A | HTTP 200, uniquement les demandes de A | HTTP 200, 4 demandes, toutes `etudiant_id=1` | `preuves/03_liste_etudiant.txt` | ✅ |
-| 4 | Liste par responsable | Autorisation lecture | Cookie responsable | HTTP 200, toutes les demandes | HTTP 200, 4 demandes (étudiants 1) | `preuves/04_liste_responsable.txt` | ✅ |
-| 5 | Création valide | Création de demande | `entreprise_id=1`, intitulé 3-160 car., dates valides | HTTP 201, statut `BROUILLON` | HTTP 201, id 5, statut `BROUILLON` | `preuves/05_creation_valide.txt` | ✅ |
-| 6 | Création par non-étudiant | Autorisation création | Cookie responsable | HTTP 403 | HTTP 403 `acces_interdit` | `preuves/06_creation_non_etudiant.txt` | ✅ |
-| 7 | Demande inexistante | Gestion des erreurs | `PATCH /api/demandes/999/statut` | HTTP 404 | HTTP 404 `demande_introuvable` | `preuves/07_demande_inexistante.txt` | ✅ |
-| 8 | Refus sans motif | Règle métier | `PATCH .../2/statut {"statut":"REFUSEE"}` | HTTP 400, motif obligatoire | HTTP 400 `motif_requis` | `preuves/08_refus_sans_motif.txt` | ✅ |
-| 9 | Validation répétée | Transitions | `PATCH .../3/statut {"statut":"SOUMISE"}` (déjà `VALIDEE`) | HTTP 409, transition interdite | HTTP 409 `transition_interdite` | `preuves/09_validation_repetee.txt` | ✅ |
-| 10 | Date invalide (format) | Validation des données | `date_debut=2027-13-40` | HTTP 400 | HTTP 400 `Dates invalides` | `preuves/10_date_invalide.txt` | ✅ |
-| 11 | Date inversée | Validation des données | début `2027-08-31`, fin `2027-06-01` | HTTP 400 | HTTP 400 `La date de fin précède la date de début` | `preuves/10_date_invalide.txt` | ✅ |
-| 12 | Lecture croisée (B lit A) | Autorisation lecture | Cookie étudiant B | Aucune donnée de A exposée | HTTP 200, 0 demande pour B ; aucune demande de A | `preuves/11_liste_etu2.json` | ✅ |
-| 13 | Mutation par étudiant | Autorisation écriture | Cookie étudiant B, `PATCH .../1/statut` | HTTP 403 | HTTP 403 `acces_interdit` | `preuves/11_patch_par_etudiant.txt` | ✅ |
-| 14 | Injection SQL (`1 OR 1=1`) | Injection | Identifiant `1 OR 1=1` dans l'URL et dans l'email | Pas d'injection : 404 (route) / 401 (identifiants) | 404 `route_inconnue` puis 401 `identifiants_invalides` | `preuves/12_injection_id.txt` | ✅ |
-| 15 | Mots de passe hachés | Stockage des secrets | Lecture directe de la table `utilisateur` | Hachage bcrypt (`$2y$`), longueur 60 | 4 comptes, préfixe `$2y$12$`, longueur 60 | `preuves/13_mots_de_passe.txt` | ✅ |
-| 16 | Protection CSRF | Sécurité session | En-têtes de la réponse de connexion | Cookie `HttpOnly` et `SameSite=Lax` | `Set-Cookie: stages_session=...; path=/; HttpOnly; SameSite=Lax` | `preuves/14_csrf_headers.txt` | ✅ |
+| 1 | Connexion valide (étudiant) | Authentification | `etudiant@exemple.test` / `etudiant123` | HTTP 200, utilisateur renvoyé, cookie de session posé | HTTP 200, `{"utilisateur":{"id":1,...}}`, cookie `stages_session` | `preuves/01_connexion_valide.txt` | OK |
+| 2 | Connexion invalide | Authentification | `etudiant@exemple.test` / `mauvais` | HTTP 401, pas de session | HTTP 401 `identifiants_invalides` | `preuves/02_connexion_invalide.txt` | OK |
+| 3 | Liste par étudiant | Autorisation lecture | Cookie étudiant A | HTTP 200, uniquement les demandes de A | HTTP 200, 4 demandes, toutes `etudiant_id=1` | `preuves/03_liste_etudiant.txt` | OK |
+| 4 | Liste par responsable | Autorisation lecture | Cookie responsable | HTTP 200, toutes les demandes | HTTP 200, 4 demandes (étudiants 1) | `preuves/04_liste_responsable.txt` | OK |
+| 5 | Création valide | Création de demande | `entreprise_id=1`, intitulé 3-160 car., dates valides | HTTP 201, statut `BROUILLON` | HTTP 201, id 5, statut `BROUILLON` | `preuves/05_creation_valide.txt` | OK |
+| 6 | Création par non-étudiant | Autorisation création | Cookie responsable | HTTP 403 | HTTP 403 `acces_interdit` | `preuves/06_creation_non_etudiant.txt` | OK |
+| 7 | Demande inexistante | Gestion des erreurs | `PATCH /api/demandes/999/statut` | HTTP 404 | HTTP 404 `demande_introuvable` | `preuves/07_demande_inexistante.txt` | OK |
+| 8 | Refus sans motif | Règle métier | `PATCH .../2/statut {"statut":"REFUSEE"}` | HTTP 400, motif obligatoire | HTTP 400 `motif_requis` | `preuves/08_refus_sans_motif.txt` | OK |
+| 9 | Validation répétée | Transitions | `PATCH .../3/statut {"statut":"SOUMISE"}` (déjà `VALIDEE`) | HTTP 409, transition interdite | HTTP 409 `transition_interdite` | `preuves/09_validation_repetee.txt` | OK |
+| 10 | Date invalide (format) | Validation des données | `date_debut=2027-13-40` | HTTP 400 | HTTP 400 `Dates invalides` | `preuves/10_date_invalide.txt` | OK |
+| 11 | Date inversée | Validation des données | début `2027-08-31`, fin `2027-06-01` | HTTP 400 | HTTP 400 `La date de fin précède la date de début` | `preuves/10_date_invalide.txt` | OK |
+| 12 | Lecture croisée (B lit A) | Autorisation lecture | Cookie étudiant B | Aucune donnée de A exposée | HTTP 200, 0 demande pour B ; aucune demande de A | `preuves/11_liste_etu2.json` | OK |
+| 13 | Mutation par étudiant | Autorisation écriture | Cookie étudiant B, `PATCH .../1/statut` | HTTP 403 | HTTP 403 `acces_interdit` | `preuves/11_patch_par_etudiant.txt` | OK |
+| 14 | Injection SQL (`1 OR 1=1`) | Injection | Identifiant `1 OR 1=1` dans l'URL et dans l'email | Pas d'injection : 404 (route) / 401 (identifiants) | 404 `route_inconnue` puis 401 `identifiants_invalides` | `preuves/12_injection_id.txt` | OK |
+| 15 | Mots de passe hachés | Stockage des secrets | Lecture directe de la table `utilisateur` | Hachage bcrypt (`$2y$`), longueur 60 | 4 comptes, préfixe `$2y$12$`, longueur 60 | `preuves/13_mots_de_passe.txt` | OK |
+| 16 | Protection CSRF | Sécurité session | En-têtes de la réponse de connexion | Cookie `HttpOnly` et `SameSite=Lax` | `Set-Cookie: stages_session=...; path=/; HttpOnly; SameSite=Lax` | `preuves/14_csrf_headers.txt` | OK |
 
 ## Cas limites exécutés (point 2 du TP)
 
@@ -55,9 +55,3 @@ le résultat réel, la colonne « Preuve » pointe vers `preuves/`.
   Pas de jeton CSRF dédié : la protection repose sur `SameSite=Lax` et sur l'origine
   commune des pages et de l'API. Limite assumée : à renforcer (jeton double-submit) si
   l'API est un jour appelée depuis une autre origine.
-
-## Conclusion
-
-Les 16 cas de la matrice passent. Les quatre cas limites renvoient les bons codes HTTP,
-les autorisations sont respectées, l'injection SQL est neutralisée par les requêtes
-préparées et le filtrage, et les mots de passe sont hachés.

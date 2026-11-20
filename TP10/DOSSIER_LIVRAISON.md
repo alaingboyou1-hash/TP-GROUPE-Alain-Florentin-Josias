@@ -27,9 +27,3 @@
 - Page de santé `GET /api/sante` : HTTP 200.
 - Sauvegarde/restauration vérifiée (COUNT identiques).
 - Matrice de tests : 16/16 passent.
-
-## Livrables du TP10
-- Ce dossier (`DOSSIER_LIVRAISON.md`).
-- `SCENARIO_DEMO.md` : scénario de démonstration de 8 minutes.
-- `RETROSPECTIVE.md` : bilan de l'équipe.
-- `QUESTIONS_INDIVIDUELLES.md` : préparation à l'oral.
